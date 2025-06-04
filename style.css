@@ -1,0 +1,131 @@
+body {
+    background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.container {
+    background: #fff;
+    max-width: 700px;
+    margin: 40px auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    padding: 32px 24px 24px 24px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2575fc;
+    margin-bottom: 24px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    color: #333;
+    margin-left: 8px;
+}
+
+form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+form input, form button {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    font-size: 1rem;
+}
+
+form input[type="date"], form input[type="number"] {
+    min-width: 150px;
+}
+
+form input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+form input:focus {
+    outline: 2px solid #2575fc;
+}
+
+form button {
+    background: #2575fc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+form button:hover {
+    background: #6a11cb;
+}
+
+.list-section {
+    margin-top: 24px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+th {
+    background: #2575fc;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background: #eaf1fb;
+}
+
+td button {
+    background: #ff5252;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin: 0 2px;
+    transition: background 0.2s;
+}
+
+td button.edit {
+    background: #ffb300;
+}
+
+td button:hover {
+    opacity: 0.85;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .container {
+        padding: 12px 2px 12px 2px;
+    }
+    form {
+        flex-direction: column;
+        gap: 8px;
+    }
+    th, td {
+        font-size: 0.95rem;
+        padding: 8px 2px;
+    }
+}

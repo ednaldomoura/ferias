@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programação de Funcionários</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Programação de Férias de Funcionários</h1>
+        <form id="vacationForm">
+            <input type="text" id="name" placeholder="Nome do Funcionário" required>
+            <input type="text" id="role" placeholder="Cargo" required>
+            <input type="date" id="periodStart" placeholder="Início Período Aquisitivo" required>
+            <input type="date" id="periodEnd" placeholder="Fim Período Aquisitivo" required>
+            <input type="date" id="startDate" placeholder="Início do Gozo" required>
+            <input type="date" id="endDate" placeholder="Fim do Gozo" required>
+            <input type="number" id="days" placeholder="Quantidade de Dias" min="1" required>
+            <label class="checkbox-label"><input type="checkbox" id="thirteenth"> 13º Salário</label>
+            <button type="submit">Adicionar Férias</button>
+        </form>
+        <div class="list-section">
+            <h2>Férias Programadas</h2>
+            <table id="vacationTable">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Período Aquisitivo</th>
+                        <th>Gozo</th>
+                        <th>Dias</th>
+                        <th>13º</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Férias serão listadas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
