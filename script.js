@@ -19,12 +19,16 @@ function renderTable() {
     vacations.forEach((vac, idx) => {
         const periodAquisitivo = `${formatDateBR(vac.periodStart)} até ${formatDateBR(vac.periodEnd)}`;
         const gozo = `${formatDateBR(vac.startDate)} até ${formatDateBR(vac.endDate)}`;
+        const saida = formatDateBR(vac.exitDate);
+        const voltar = formatDateBR(vac.returnDate);
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${vac.name}</td>
             <td>${vac.role}</td>
             <td>${periodAquisitivo}</td>
             <td>${gozo}</td>
+            <td>${saida}</td>
+            <td>${voltar}</td>
             <td>${vac.days}</td>
             <td>${vac.thirteenth ? 'Sim' : 'Não'}</td>
             <td>
@@ -44,12 +48,14 @@ form.onsubmit = function(e) {
     const periodEnd = document.getElementById('periodEnd').value;
     const startDate = document.getElementById('startDate').value;
     const endDate = document.getElementById('endDate').value;
+    const exitDate = document.getElementById('exitDate').value;
+    const returnDate = document.getElementById('returnDate').value;
     const days = document.getElementById('days').value;
     const thirteenth = document.getElementById('thirteenth').checked;
     if (editIndex === null) {
-        vacations.push({ name, role, periodStart, periodEnd, startDate, endDate, days, thirteenth });
+        vacations.push({ name, role, periodStart, periodEnd, startDate, endDate, exitDate, returnDate, days, thirteenth });
     } else {
-        vacations[editIndex] = { name, role, periodStart, periodEnd, startDate, endDate, days, thirteenth };
+        vacations[editIndex] = { name, role, periodStart, periodEnd, startDate, endDate, exitDate, returnDate, days, thirteenth };
         editIndex = null;
         form.querySelector('button[type="submit"]').textContent = 'Adicionar Férias';
     }
@@ -66,6 +72,8 @@ window.editVacation = function(idx) {
     document.getElementById('periodEnd').value = vac.periodEnd;
     document.getElementById('startDate').value = vac.startDate;
     document.getElementById('endDate').value = vac.endDate;
+    document.getElementById('exitDate').value = vac.exitDate;
+    document.getElementById('returnDate').value = vac.returnDate;
     document.getElementById('days').value = vac.days;
     document.getElementById('thirteenth').checked = vac.thirteenth;
     editIndex = idx;
