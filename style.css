@@ -7,7 +7,8 @@ body {
 
 .container {
     background: #fff;
-    max-width: 950px;
+    max-width: 1100px;
+    width: 98vw;
     margin: 40px auto;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.15);
@@ -78,6 +79,7 @@ form button:hover {
 
 .list-section {
     margin-top: 24px;
+    overflow-x: auto;
 }
 
 table {
@@ -126,6 +128,7 @@ td button:hover {
 @media (max-width: 1100px) {
     .container {
         max-width: 99vw;
+        padding: 18px 4px 18px 4px;
     }
     form {
         grid-template-columns: repeat(2, 1fr);
@@ -149,11 +152,28 @@ td button:hover {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+    .container {
+        padding: 8px 2px 8px 2px;
+    }
     form {
         grid-template-columns: 1fr;
+        gap: 10px 0;
     }
     form button {
         grid-column: span 1;
     }
+    th, td {
+        font-size: 0.95rem;
+        padding: 8px 2px;
+    }
+}
+
+/* Tabela responsiva */
+.list-section {
+    overflow-x: auto;
+}
+
+#vacationTable {
+    min-width: 800px;
 }
