@@ -8,15 +8,23 @@ function saveVacations() {
     localStorage.setItem('vacations', JSON.stringify(vacations));
 }
 
+function formatDateBR(dateStr) {
+    if (!dateStr) return '';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+}
+
 function renderTable() {
     tableBody.innerHTML = '';
     vacations.forEach((vac, idx) => {
+        const periodAquisitivo = `${formatDateBR(vac.periodStart)} até ${formatDateBR(vac.periodEnd)}`;
+        const gozo = `${formatDateBR(vac.startDate)} até ${formatDateBR(vac.endDate)}`;
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${vac.name}</td>
             <td>${vac.role}</td>
-            <td>${vac.periodStart} até ${vac.periodEnd}</td>
-            <td>${vac.startDate} até ${vac.endDate}</td>
+            <td>${periodAquisitivo}</td>
+            <td>${gozo}</td>
             <td>${vac.days}</td>
             <td>${vac.thirteenth ? 'Sim' : 'Não'}</td>
             <td>

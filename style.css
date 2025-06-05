@@ -7,7 +7,7 @@ body {
 
 .container {
     background: #fff;
-    max-width: 700px;
+    max-width: 950px;
     margin: 40px auto;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.15);
@@ -30,11 +30,16 @@ h1, h2 {
 }
 
 form {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 18px;
+    align-items: end;
     margin-bottom: 32px;
+}
+
+form input, form button, form label.checkbox-label {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 form input, form button {
@@ -63,6 +68,8 @@ form button {
     border: none;
     cursor: pointer;
     transition: background 0.2s;
+    grid-column: span 4;
+    margin-top: 8px;
 }
 
 form button:hover {
@@ -116,6 +123,18 @@ td button:hover {
 }
 
 /* Responsividade */
+@media (max-width: 1100px) {
+    .container {
+        max-width: 99vw;
+    }
+    form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    form button {
+        grid-column: span 2;
+    }
+}
+
 @media (max-width: 900px) {
     .container {
         padding: 12px 2px 12px 2px;
@@ -127,5 +146,14 @@ td button:hover {
     th, td {
         font-size: 0.95rem;
         padding: 8px 2px;
+    }
+}
+
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+    form button {
+        grid-column: span 1;
     }
 }
