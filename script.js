@@ -18,17 +18,17 @@ function renderTable() {
     tableBody.innerHTML = '';
     vacations.forEach((vac, idx) => {
         const periodAquisitivo = `${formatDateBR(vac.periodStart)} até ${formatDateBR(vac.periodEnd)}`;
-        const gozo = `${formatDateBR(vac.startDate)} até ${formatDateBR(vac.endDate)}`;
+        const inicioFerias = formatDateBR(vac.startDate);
         const saida = formatDateBR(vac.exitDate);
-        const voltar = formatDateBR(vac.returnDate);
+        const retorno = formatDateBR(vac.returnDate);
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${vac.name}</td>
             <td>${vac.role}</td>
             <td>${periodAquisitivo}</td>
-            <td>${gozo}</td>
+            <td>${inicioFerias}</td>
             <td>${saida}</td>
-            <td>${voltar}</td>
+            <td>${retorno}</td>
             <td>${vac.days}</td>
             <td>${vac.thirteenth ? 'Sim' : 'Não'}</td>
             <td>
@@ -42,20 +42,19 @@ function renderTable() {
 
 form.onsubmit = function(e) {
     e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const role = document.getElementById('role').value.trim();
-    const periodStart = document.getElementById('periodStart').value;
-    const periodEnd = document.getElementById('periodEnd').value;
-    const startDate = document.getElementById('startDate').value;
-    const endDate = document.getElementById('endDate').value;
-    const exitDate = document.getElementById('exitDate').value;
-    const returnDate = document.getElementById('returnDate').value;
-    const days = document.getElementById('days').value;
-    const thirteenth = document.getElementById('thirteenth').checked;
+    var name = document.getElementById('name').value.trim();
+    var role = document.getElementById('role').value.trim();
+    var periodStart = document.getElementById('periodStart').value;
+    var periodEnd = document.getElementById('periodEnd').value;
+    var startDate = document.getElementById('startDate').value;
+    var exitDate = document.getElementById('exitDate').value;
+    var returnDate = document.getElementById('returnDate').value;
+    var days = document.getElementById('days').value;
+    var thirteenth = document.getElementById('thirteenth').checked;
     if (editIndex === null) {
-        vacations.push({ name, role, periodStart, periodEnd, startDate, endDate, exitDate, returnDate, days, thirteenth });
+        vacations.push({ name, role, periodStart, periodEnd, startDate, exitDate, returnDate, days, thirteenth });
     } else {
-        vacations[editIndex] = { name, role, periodStart, periodEnd, startDate, endDate, exitDate, returnDate, days, thirteenth };
+        vacations[editIndex] = { name, role, periodStart, periodEnd, startDate, exitDate, returnDate, days, thirteenth };
         editIndex = null;
         form.querySelector('button[type="submit"]').textContent = 'Adicionar Férias';
     }
@@ -65,13 +64,12 @@ form.onsubmit = function(e) {
 };
 
 window.editVacation = function(idx) {
-    const vac = vacations[idx];
+    var vac = vacations[idx];
     document.getElementById('name').value = vac.name;
     document.getElementById('role').value = vac.role;
     document.getElementById('periodStart').value = vac.periodStart;
     document.getElementById('periodEnd').value = vac.periodEnd;
     document.getElementById('startDate').value = vac.startDate;
-    document.getElementById('endDate').value = vac.endDate;
     document.getElementById('exitDate').value = vac.exitDate;
     document.getElementById('returnDate').value = vac.returnDate;
     document.getElementById('days').value = vac.days;
